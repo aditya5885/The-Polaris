@@ -84,27 +84,144 @@
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
         .glass-nav {
-            background: rgba(246, 246, 246, 0.7);
+            background: transparent;
+            backdrop-filter: blur(0px);
+            transition: background 0.4s ease, backdrop-filter 0.4s ease;
+        }
+        .glass-nav:hover, .glass-nav.scrolled {
+            background: rgba(246, 246, 246, 0.9);
             backdrop-filter: blur(20px);
         }
         .hero-gradient {
             background: linear-gradient(to bottom, rgba(23, 106, 33, 0.4), rgba(21, 94, 154, 0.6));
         }
+
+        /* Premium Split Loader Styles */
+        #premium-loader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .loader-panel {
+            position: absolute;
+            width: 100%;
+            background-color: #f6f6f6;
+            pointer-events: auto;
+            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        
+        .loader-top {
+            top: 0;
+            bottom: 50%;
+            transform-origin: top;
+        }
+        
+        .loader-bottom {
+            top: 50%;
+            bottom: 0;
+            transform-origin: bottom;
+        }
+        
+        .loader-loaded .loader-top {
+            transform: scaleY(0);
+        }
+        
+        .loader-loaded .loader-bottom {
+            transform: scaleY(0);
+        }
+
+        .loader-content {
+            position: relative;
+            z-index: 10;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: text-reveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s forwards;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .loader-loaded .loader-content {
+            opacity: 0 !important;
+            transition: opacity 0.4s ease;
+        }
+
+        @keyframes text-reveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        #loader-line {
+            transform-origin: left;
+            animation: line-grow 0.8s cubic-bezier(0.8, 0, 0.2, 1) 0.8s forwards;
+        }
+        
+        @keyframes line-grow {
+            to { transform: scaleX(1); }
+        }
+
+        /* Floating action button animations */
+        @keyframes float-soft {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float-soft 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.6; }
+            100% { transform: scale(1.6); opacity: 0; }
+        }
+        .animate-pulse-ring::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background-color: inherit;
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+            z-index: -1;
+        }
+
+        /* Navbar dynamic color on scroll/transparent */
+        .glass-nav:not(.scrolled):not(:hover) .nav-logo { color: white !important; }
+        .glass-nav:not(.scrolled):not(:hover) .nav-link-active { color: white !important; border-color: white !important; }
+        .glass-nav:not(.scrolled):not(:hover) .nav-link { color: rgba(255, 255, 255, 0.8) !important; }
+        .glass-nav:not(.scrolled):not(:hover) .nav-btn { background-color: white !important; color: #176a21 !important; }
     </style>
+
 </head>
 <body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+
+    <!-- Premium Split Loader -->
+    <div id="premium-loader">
+        <div class="loader-panel loader-top"></div>
+        <div class="loader-panel loader-bottom"></div>
+        <div class="loader-content">
+            <span class="font-headline text-3xl md:text-5xl font-bold tracking-widest text-primary uppercase drop-shadow-sm">The Polaris</span>
+            <div class="w-16 h-[3px] bg-primary mt-6 scale-x-0" id="loader-line"></div>
+        </div>
+    </div>
 
     <!-- Top Navigation Bar -->
     <nav class="fixed top-0 w-full z-50 glass-nav">
         <div class="flex justify-between items-center px-8 py-6 max-w-screen-2xl mx-auto">
-            <div class="text-2xl font-bold tracking-tighter text-primary font-headline">The Polaris</div>
+            <div class="nav-logo text-2xl font-bold tracking-tighter text-primary font-headline transition-colors">The Polaris</div>
             <div class="hidden md:flex gap-10 items-center">
-                <a class="font-headline text-sm tracking-wide uppercase font-semibold text-primary border-b-2 border-primary pb-1" href="#about">The Stay</a>
-                <a class="font-headline text-sm tracking-wide uppercase font-semibold text-on-surface opacity-80 hover:text-secondary transition-colors duration-300" href="#rooms">Suites</a>
-                <a class="font-headline text-sm tracking-wide uppercase font-semibold text-on-surface opacity-80 hover:text-secondary transition-colors duration-300" href="#experiences">Experiences</a>
-                <a class="font-headline text-sm tracking-wide uppercase font-semibold text-on-surface opacity-80 hover:text-secondary transition-colors duration-300" href="#host">Host</a>
+                <a class="nav-link-active font-headline text-sm tracking-wide uppercase font-semibold text-primary border-b-2 border-primary pb-1 transition-colors" href="#about">The Stay</a>
+                <a class="nav-link font-headline text-sm tracking-wide uppercase font-semibold text-on-surface opacity-80 hover:text-secondary transition-colors duration-300" href="#rooms">Suites</a>
+                <a class="nav-link font-headline text-sm tracking-wide uppercase font-semibold text-on-surface opacity-80 hover:text-secondary transition-colors duration-300" href="#experiences">Experiences</a>
+                <a class="nav-link font-headline text-sm tracking-wide uppercase font-semibold text-on-surface opacity-80 hover:text-secondary transition-colors duration-300" href="#host">Host</a>
             </div>
-            <a href="#contact" class="bg-primary text-on-primary px-6 py-3 rounded-full font-headline text-sm font-bold uppercase tracking-widest scale-95 active:scale-90 transition-all shadow-lg shadow-primary/10">
+            <a href="#contact" class="nav-btn bg-primary text-on-primary px-6 py-3 rounded-full font-headline text-sm font-bold uppercase tracking-widest scale-95 active:scale-90 transition-all shadow-lg shadow-primary/10">
                 Book Your Escape
             </a>
         </div>
@@ -138,30 +255,34 @@
     </header>
 
     <!-- About Section -->
-    <section id="about" class="py-24 px-8 bg-surface-container-low overflow-hidden">
-        <div class="max-w-screen-xl mx-auto grid md:grid-cols-2 gap-20 items-center">
-            <div class="relative">
-                <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary-container rounded-full opacity-30 blur-3xl"></div>
-                <img class="rounded-xl shadow-2xl relative z-10 w-full h-[600px] object-cover" alt="Lush tropical garden patio of the homestay" src="./demo/property-exterior.avif"/>
-                <div class="absolute -bottom-12 -right-12 hidden lg:block">
-                    <img class="rounded-lg shadow-xl w-64 h-64 object-cover border-8 border-surface" alt="Close up of tropical courtyard" src="./demo/courtyard-garden.webp"/>
-                </div>
-            </div>
+    <section id="about" class="py-32 px-8 bg-surface-container-low overflow-hidden">
+        <div class="max-w-screen-xl mx-auto flex flex-col items-center text-center">
+            <span class="text-secondary font-headline font-bold uppercase tracking-widest text-sm mb-4">A Quiet Corner</span>
+            <h2 class="text-4xl md:text-5xl font-headline font-light text-primary leading-tight max-w-4xl italic mb-20">"Designed to reflect the timeless elegance and relaxed tempo of coastal Kerala."</h2>
             
-            <div class="space-y-8">
-                <span class="bg-primary-container text-on-primary-fixed-variant px-4 py-1.5 rounded-full text-sm font-bold tracking-widest uppercase">A Quiet Corner</span>
-                <h2 class="text-5xl font-headline font-extrabold text-primary leading-tight">Welcome to The Polaris</h2>
-                <p class="text-lg text-on-surface-variant leading-relaxed">
-                    Designed to reflect the timeless elegance and relaxed tempo of coastal Kerala. Nestled in a peaceful residential lane, our boutique homestay is a sanctuary away from the hustle, yet perfectly positioned a short stroll from Fort Kochi's rich colonial history.
-                </p>
-                <p class="text-lg text-on-surface-variant leading-relaxed">
-                    Here, slow travel is celebrated. Whether you're enjoying a morning tea on a sunlit veranda or winding down after exploring the heritage streets, our space offers a warm, minimalistic retreat for the modern wanderer seeking deep rest.
-                </p>
-                <div class="pt-6">
-                    <a class="text-secondary font-headline font-bold flex items-center gap-2 group" href="#host">
-                        Meet Your Host 
-                        <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
-                    </a>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center text-left w-full">
+                <div class="md:col-span-6 lg:col-span-5 relative">
+                    <img class="w-full h-[500px] lg:h-[650px] object-cover rounded-[12rem] rounded-bl-3xl shadow-2xl relative z-10" alt="Lush tropical garden patio of the homestay" src="./demo/property-exterior.avif"/>
+                    <div class="absolute -bottom-10 -right-10 w-48 h-48 lg:w-64 lg:h-64 rounded-full overflow-hidden border-[10px] border-surface-container-low hidden md:block shadow-xl z-20 hover:scale-105 transition-transform duration-500">
+                        <img class="w-full h-full object-cover" alt="Close up of tropical courtyard" src="./demo/courtyard-garden.webp"/>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-6 lg:col-span-7 space-y-8 lg:pl-10">
+                    <h3 class="text-4xl lg:text-5xl font-headline font-bold text-on-surface leading-tight">Welcome to <br/><span class="text-primary">The Polaris</span></h3>
+                    <div class="w-20 h-1 bg-secondary rounded-full"></div>
+                    <p class="text-lg text-on-surface-variant leading-relaxed opacity-90">
+                        Nestled in a peaceful residential lane, our boutique homestay is a sanctuary away from the hustle, yet perfectly positioned just a short stroll from Fort Kochi's rich colonial history. 
+                    </p>
+                    <p class="text-lg text-on-surface-variant leading-relaxed opacity-90">
+                        Here, slow travel is celebrated. Whether you're enjoying a morning tea on a sunlit veranda or winding down after exploring the heritage streets, our space offers a warm, minimalistic retreat for the modern wanderer seeking deep rest.
+                    </p>
+                    <div class="pt-6">
+                        <a class="text-secondary font-headline font-bold flex items-center gap-3 group w-max border-b-2 border-transparent hover:border-secondary pb-1 transition-all text-lg" href="#host">
+                            Meet Your Host 
+                            <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">east</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -169,18 +290,24 @@
     
     <!-- About Host Section -->
     <section id="host" class="py-24 px-8 bg-surface">
-        <div class="max-w-screen-xl mx-auto grid md:grid-cols-[2fr_1fr] gap-20 items-center">
-            <div class="space-y-6 order-2 md:order-1">
-                <h2 class="text-4xl font-headline font-bold text-primary mb-2">Meet Your Host, Tharun</h2>
-                <p class="text-lg text-on-surface-variant leading-relaxed mb-6">
-                    Hi, I'm Tharun. Since 2026, I've had the absolute joy of welcoming travelers from around the world to Fort Kochi. My philosophy is simple: I don't just provide a room; I help you experience my home city like a local. 
-                </p>
-                <p class="text-lg text-on-surface-variant leading-relaxed">
-                    From mapping out hidden heritage walks and pointing you toward the best uncrowded cafes, to simply sharing a cup of freshly brewed South Indian coffee in the morning—I’m here (in English, Hindi, or Malayalam) to ensure your stay is authentic, effortless, and deeply memorable.
-                </p>
-            </div>
-            <div class="order-1 md:order-2">
-                 <img class="rounded-full shadow-2xl relative z-10 w-64 h-64 md:w-80 md:h-80 object-cover mx-auto ring-8 ring-primary/10" alt="Host Tharun" src="./demo/kochi-harbour.webp"/>
+        <div class="max-w-screen-xl mx-auto relative">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-0">
+                <div class="lg:col-span-7 relative z-10 h-[400px] lg:h-[600px]">
+                    <img class="w-full h-full object-cover rounded-3xl shadow-2xl" alt="Host Tharun" src="./demo/kochi-harbour.webp"/>
+                </div>
+                <div class="lg:col-span-5 lg:-ml-12 relative z-20 flex items-center mt-[-60px] lg:mt-0 lg:py-16 mx-4 lg:mx-0">
+                    <div class="bg-white p-8 md:p-14 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-outline-variant/10">
+                        <span class="text-sm font-bold tracking-widest uppercase text-secondary mb-4 block">Your Local Guide</span>
+                        <h2 class="text-4xl md:text-5xl font-headline font-bold text-primary mb-6">Meet Tharun</h2>
+                        <p class="text-lg text-on-surface-variant leading-relaxed mb-6">
+                            Hi, I'm Tharun. Since 2026, I've had the absolute joy of welcoming travelers from around the world to Fort Kochi. My philosophy is simple: I don't just provide a room; I help you experience my home city like a local. 
+                        </p>
+                        <p class="text-lg text-on-surface-variant leading-relaxed mb-8">
+                            From mapping out hidden heritage walks and pointing you toward the best uncrowded cafes, to simply sharing a cup of freshly brewed South Indian coffee in the morning—I’m here (in English, Hindi, or Malayalam) to ensure your stay is authentic, effortless, and deeply memorable.
+                        </p>
+                        <div class="text-primary font-headline font-bold text-xl italic">Tharun</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -260,30 +387,27 @@
     </section>
 
     <!-- Experiences Grid (Visual Journey) -->
-    <section class="py-24 px-8 bg-surface overflow-hidden">
+    <section id="gallery" class="py-24 px-8 bg-surface overflow-hidden">
         <div class="max-w-screen-xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-headline font-bold text-on-surface mb-4">Island Life in Focus</h2>
                 <p class="text-on-surface-variant text-lg">A visual journey through our tropical sanctuary.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- Left Column -->
-                <div class="flex flex-col gap-4">
-                    <div class="overflow-hidden rounded-xl shadow-lg group">
-                        <img alt="Backwaters of Kochi" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="./demo/backwater-trip.avif" style="object-position: center; aspect-ratio: 16/10;"/>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="overflow-hidden rounded-xl shadow-lg group">
-                            <img alt="Art and culture cafes" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="./demo/local-cafes.avif" style="object-position: center; aspect-ratio: 1/1;"/>
-                        </div>
-                        <div class="overflow-hidden rounded-xl shadow-lg group">
-                            <img alt="Fort Kochi scenic views" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="./demo/kochi-harbour.webp" style="object-position: center; aspect-ratio: 1/1;"/>
-                        </div>
-                    </div>
+            <div class="relative">
+                <!-- Grid of images -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 h-[600px] md:h-[800px] overflow-hidden rounded-xl">
+                    <img class="w-full h-full object-cover shadow-sm hover:scale-105 transition-transform duration-500" alt="Premium Room" src="./demo/premium-room.avif" />
+                    <img class="w-full h-full object-cover shadow-sm hover:scale-105 transition-transform duration-500" alt="Local Cafes" src="./demo/local-cafes.avif" />
+                    <img class="w-full h-full object-cover shadow-sm hover:scale-105 transition-transform duration-500" alt="Classic Room" src="./demo/classic-room.avif" />
+                    <img class="w-full h-full object-cover shadow-sm hover:scale-105 transition-transform duration-500" alt="Heritage Elements" src="./demo/heritage-walk.webp" />
+                    <img class="w-full h-full object-cover shadow-sm hover:scale-105 transition-transform duration-500" alt="Family Suite" src="./demo/family-suite.avif" />
+                    <img class="w-full h-full object-cover shadow-sm hover:scale-105 transition-transform duration-500" alt="Fishing Nets" src="./demo/fishing-nets.avif" />
                 </div>
-                <!-- Right Column -->
-                <div class="overflow-hidden rounded-xl shadow-lg group">
-                    <img alt="Chinese Fishing Nets" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="./demo/fishing-nets.avif" style="object-position: center; aspect-ratio: 1/1.2;"/>
+                <!-- Faded Overlay & Button -->
+                <div class="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-surface to-transparent flex items-end justify-center pb-6">
+                     <a href="https://instagram.com" target="_blank" class="bg-primary text-on-primary font-headline font-bold py-4 px-10 rounded-full shadow-[0_10px_40px_rgba(23,106,33,0.3)] hover:-translate-y-1 hover:shadow-2xl transition-all flex items-center gap-2">
+                         Explore Full Gallery <span class="material-symbols-outlined">arrow_forward</span>
+                     </a>
                 </div>
             </div>
         </div>
@@ -306,7 +430,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <div class="group cursor-pointer">
                     <div class="overflow-hidden rounded-lg aspect-[4/5] mb-6">
-                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Heritage walk in Fort Kochi" src="./demo/heritage-walk.webp"/>
+                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Heritage walk in Fort Kochi" src="https://images.unsplash.com/photo-1620766182966-c6eb5ed2b788?q=80&w=800&auto=format&fit=crop"/>
                     </div>
                     <h4 class="text-2xl font-headline font-bold mb-2">Heritage Walk</h4>
                     <p class="text-primary-container">Stroll past centuries of colonial footprints, from Santa Cruz to Dutch cemeteries.</p>
@@ -314,7 +438,7 @@
                 
                 <div class="group cursor-pointer">
                     <div class="overflow-hidden rounded-lg aspect-[4/5] mb-6">
-                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Kathakali Performance" src="./demo/kathakali-show.avif"/>
+                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Kathakali Performance" src="https://images.unsplash.com/photo-1600100397608-f010f41cb8e1?q=80&w=800&auto=format&fit=crop"/>
                     </div>
                     <h4 class="text-2xl font-headline font-bold mb-2">Kathakali Spectacles</h4>
                     <p class="text-primary-container">Get lost in the dramatic, rhythmic storytelling of ancient Kerala dance, just minutes away.</p>
@@ -322,7 +446,7 @@
                 
                 <div class="group cursor-pointer">
                     <div class="overflow-hidden rounded-lg aspect-[4/5] mb-6">
-                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Sunset backwater cruise" src="./demo/backwater-trip.avif"/>
+                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Sunset backwater cruise" src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=800&auto=format&fit=crop"/>
                     </div>
                     <h4 class="text-2xl font-headline font-bold mb-2">Backwater Tranquility</h4>
                     <p class="text-primary-container">Let us arrange a languid afternoon drifting through the famous emerald canals.</p>
@@ -436,19 +560,56 @@
             <!-- FAQS -->
             <div>
                 <h3 class="text-3xl font-headline font-bold text-primary mb-8">Frequently Asked Questions</h3>
-                <div class="space-y-6">
-                    <div class="bg-surface-container-low p-6 rounded-xl border border-surface-variant">
-                        <h4 class="font-bold font-headline mb-2">Do you allow early check-ins or late check-outs?</h4>
-                        <p class="text-sm text-on-surface-variant">We do our best to accommodate these requests based on availability. Please let us know your arrival time in advance.</p>
-                    </div>
-                    <div class="bg-surface-container-low p-6 rounded-xl border border-surface-variant">
-                        <h4 class="font-bold font-headline mb-2">Is food available at the homestay?</h4>
-                        <p class="text-sm text-on-surface-variant">While we do not run a restaurant, we are surrounded by spectacular cafes and seafood spots in Fort Kochi, all within walking distance.</p>
-                    </div>
-                    <div class="bg-surface-container-low p-6 rounded-xl border border-surface-variant">
-                        <h4 class="font-bold font-headline mb-2">Can you help arrange tours?</h4>
-                        <p class="text-sm text-on-surface-variant">Absolutely! We gladly assist in booking airport transfers, backwater tours, and Kathakali show tickets.</p>
-                    </div>
+                <div class="space-y-4">
+                    <details class="group bg-surface-container-low p-5 rounded-xl border border-surface-variant cursor-pointer [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex justify-between items-center font-bold font-headline text-on-surface">
+                            <span>Do you allow early check-ins or late check-outs?</span>
+                            <span class="transition-transform group-open:-rotate-180 text-primary">
+                                <span class="material-symbols-outlined">expand_more</span>
+                            </span>
+                        </summary>
+                        <p class="text-on-surface-variant mt-4 leading-relaxed border-t border-surface-variant/50 pt-4">We do our best to accommodate these requests based on availability. Please let us know your arrival time in advance.</p>
+                    </details>
+                    
+                    <details class="group bg-surface-container-low p-5 rounded-xl border border-surface-variant cursor-pointer [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex justify-between items-center font-bold font-headline text-on-surface">
+                            <span>Is food available at the homestay?</span>
+                            <span class="transition-transform group-open:-rotate-180 text-primary">
+                                <span class="material-symbols-outlined">expand_more</span>
+                            </span>
+                        </summary>
+                        <p class="text-on-surface-variant mt-4 leading-relaxed border-t border-surface-variant/50 pt-4">We don't run a full restaurant, but breakfast is included. You are also surrounded by spectacular cafes and seafood spots in Fort Kochi, all within a short 5-minute walk.</p>
+                    </details>
+                    
+                    <details class="group bg-surface-container-low p-5 rounded-xl border border-surface-variant cursor-pointer [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex justify-between items-center font-bold font-headline text-on-surface">
+                            <span>Can you help arrange local tours?</span>
+                            <span class="transition-transform group-open:-rotate-180 text-primary">
+                                <span class="material-symbols-outlined">expand_more</span>
+                            </span>
+                        </summary>
+                        <p class="text-on-surface-variant mt-4 leading-relaxed border-t border-surface-variant/50 pt-4">Absolutely! We gladly assist in booking reliable airport transfers, scenic backwater tours, and Kathakali show tickets through our trusted local partners.</p>
+                    </details>
+
+                    <details class="group bg-surface-container-low p-5 rounded-xl border border-surface-variant cursor-pointer [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex justify-between items-center font-bold font-headline text-on-surface">
+                            <span>Is parking available at the property?</span>
+                            <span class="transition-transform group-open:-rotate-180 text-primary">
+                                <span class="material-symbols-outlined">expand_more</span>
+                            </span>
+                        </summary>
+                        <p class="text-on-surface-variant mt-4 leading-relaxed border-t border-surface-variant/50 pt-4">Yes, we offer safe, complimentary parking for our guests on the premises. Just let us know you're driving so we can reserve a spot.</p>
+                    </details>
+
+                    <details class="group bg-surface-container-low p-5 rounded-xl border border-surface-variant cursor-pointer [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex justify-between items-center font-bold font-headline text-on-surface">
+                            <span>Is there Wi-Fi and is it suitable for remote work?</span>
+                            <span class="transition-transform group-open:-rotate-180 text-primary">
+                                <span class="material-symbols-outlined">expand_more</span>
+                            </span>
+                        </summary>
+                        <p class="text-on-surface-variant mt-4 leading-relaxed border-t border-surface-variant/50 pt-4">Yes! We provide high-speed, complimentary Wi-Fi across the entire property. Many guests love working from our shaded verandas or the quiet courtyard.</p>
+                    </details>
                 </div>
             </div>
         </div>
@@ -541,12 +702,25 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Widget -->
-    <div class="fixed bottom-24 right-8 z-40 hidden md:block">
-        <a class="flex items-center gap-3 bg-white px-6 py-3 rounded-full shadow-2xl border border-outline-variant/20 hover:-translate-y-1 transition-transform" href="#">
-            <div class="w-3 h-3 rounded-full bg-[#25D366] animate-pulse"></div>
-            <span class="font-headline font-bold text-primary">Chat with Tharun</span>
-            <span class="material-symbols-outlined text-[#25D366]">chat</span>
+    <!-- Floating Icons (Left) -->
+    <div class="fixed bottom-24 md:bottom-10 left-6 md:left-8 z-40 flex flex-col gap-4">
+        <!-- Phone -->
+        <a class="relative animate-float flex items-center justify-center w-14 h-14 bg-white text-primary rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-outline-variant/10 hover:scale-110 active:scale-95 transition-all" href="tel:+910000000000" title="Call Us">
+            <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">call</span>
+        </a>
+    </div>
+
+    <!-- Floating Icons (Right) -->
+    <div class="fixed bottom-24 md:bottom-10 right-6 md:right-8 z-40 flex flex-col gap-4 items-end">
+        <!-- Booking Appointment -->
+        <a class="relative animate-float flex items-center justify-center w-14 h-14 bg-secondary text-white rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-outline-variant/10 hover:scale-110 active:scale-95 transition-all" style="animation-delay: 0.5s;" href="#rooms" title="Book Appointment">
+            <span class="material-symbols-outlined text-2xl">event_available</span>
+        </a>
+        <!-- WhatsApp -->
+        <a class="relative animate-float animate-pulse-ring flex items-center justify-center w-[60px] h-[60px] bg-[#25D366] text-white rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-outline-variant/10 hover:scale-110 active:scale-95 transition-all" style="animation-delay: 1s;" href="#" title="WhatsApp">
+            <svg class="w-9 h-9" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"></path>
+            </svg>
         </a>
     </div>
 
@@ -557,5 +731,29 @@
         </a>
     </div>
 
+    <!-- Loader Script -->
+    <script>
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('premium-loader');
+            // Wait slightly for the brand text animation to be fully appreciated
+            setTimeout(() => {
+                loader.classList.add('loader-loaded');
+                // Remove from DOM strictly after transitions finish
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 1200);
+            }, 1500);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.glass-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>
