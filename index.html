@@ -11,14 +11,16 @@
         content="Fort Kochi homestay, Kerala homestay, stay in Fort Kochi, budget homestay Kochi, boutique stay Kerala, The Polaris Kochi">
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Performance Preloads -->
+    <link rel="preload" as="image" href="./home4.webp" fetchpriority="high" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Be+Vietnam+Pro:wght@400;500&display=swap"
         rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block"
         rel="stylesheet" />
-
-    <!-- GLightbox CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
 
     <script id="tailwind-config">
         tailwind.config = {
@@ -151,35 +153,70 @@
         .loader-content {
             position: relative;
             z-index: 10;
+        }
+
+        .reveal-letter {
+            display: inline-block;
+            transform: translateY(110%);
             opacity: 0;
-            transform: translateY(20px);
-            animation: text-reveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s forwards;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            filter: blur(10px);
+            animation: reveal-stagger 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        @keyframes reveal-stagger {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+                filter: blur(0);
+            }
+        }
+
+        /* Staggered Delays for 'The Polaris' letters */
+        .reveal-letter:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .reveal-letter:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .reveal-letter:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .reveal-letter:nth-child(4) {
+            animation-delay: 0.35s;
+        }
+
+        /* Space/Gap */
+        .reveal-letter:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .reveal-letter:nth-child(6) {
+            animation-delay: 0.45s;
+        }
+
+        .reveal-letter:nth-child(7) {
+            animation-delay: 0.5s;
+        }
+
+        .reveal-letter:nth-child(8) {
+            animation-delay: 0.55s;
+        }
+
+        .reveal-letter:nth-child(9) {
+            animation-delay: 0.6s;
+        }
+
+        .reveal-letter:nth-child(10) {
+            animation-delay: 0.65s;
         }
 
         .loader-loaded .loader-content {
             opacity: 0 !important;
-            transition: opacity 0.4s ease;
-        }
-
-        @keyframes text-reveal {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        #loader-line {
-            transform-origin: left;
-            animation: line-grow 0.8s cubic-bezier(0.8, 0, 0.2, 1) 0.8s forwards;
-        }
-
-        @keyframes line-grow {
-            to {
-                transform: scaleX(1);
-            }
+            transform: scale(0.9) translateY(-20px);
+            transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
         }
 
         /* Floating action button animations */
@@ -283,19 +320,36 @@
     <div id="premium-loader">
         <div class="loader-panel loader-top"></div>
         <div class="loader-panel loader-bottom"></div>
-        <div class="loader-content">
-            <span
-                class="font-headline text-3xl md:text-5xl font-bold tracking-widest text-primary uppercase drop-shadow-sm">The
-                Polaris</span>
-            <div class="w-16 h-[3px] bg-primary mt-6 scale-x-0" id="loader-line"></div>
+        <div class="loader-content flex flex-col items-center">
+            <div class="overflow-hidden mb-4">
+                <h2
+                    class="text-reveal-container font-headline text-3xl md:text-5xl font-bold tracking-[0.2em] text-primary uppercase flex gap-1 justify-center">
+                    <span class="reveal-letter">T</span>
+                    <span class="reveal-letter">h</span>
+                    <span class="reveal-letter">e</span>
+                    <span class="reveal-letter ml-2 md:ml-4">P</span>
+                    <span class="reveal-letter">o</span>
+                    <span class="reveal-letter">l</span>
+                    <span class="reveal-letter">a</span>
+                    <span class="reveal-letter">r</span>
+                    <span class="reveal-letter">i</span>
+                    <span class="reveal-letter">s</span>
+                </h2>
+            </div>
+            <div class="w-12 md:w-20 h-[2px] bg-primary/40 relative overflow-hidden rounded-full">
+                <div id="loader-progress" class="absolute inset-0 bg-primary translate-x-[-100%]"></div>
+            </div>
+            <p
+                class="text-[12px] md:text-[15px] uppercase tracking-[0.3em] md:tracking-[0.4em] mt-6 font-bold animate-pulse text-center px-4">
+                Best Homestay at Fort Kochi</p>
         </div>
     </div>
 
     <!-- Top Navigation Bar -->
     <nav class="fixed top-0 w-full z-50 glass-nav">
-        <div class="flex justify-between items-center px-8 py-6 max-w-screen-2xl mx-auto">
+        <div class="flex justify-between items-center px-6 md:px-8 py-6 max-w-screen-2xl mx-auto">
             <a href="#" class="nav-logo transition-colors">
-                <img src="./polarislogo_nobg.png" alt="The Polaris" class="h-10 md:h-12 w-auto object-contain" />
+                <h2>The Polaris</h2>
             </a>
             <div class="hidden md:flex gap-10 items-center">
                 <a class="nav-link-active font-headline text-sm tracking-wide uppercase font-semibold text-primary border-b-2 border-primary pb-1 transition-colors"
@@ -316,10 +370,10 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative h-screen w-full flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 z-0 bg-black/70">
-            <img class="w-full h-full object-cover brightness-50" alt="Stunning view of Fort Kochi beach"
-                src="./home4.jpg" />
+    <header class="relative h-screen w-full flex items-center justify-center overflow-hidden bg-black">
+        <div class="absolute inset-0 z-0">
+            <img class="w-full h-full object-cover brightness-75" alt="Stunning view of Fort Kochi beach"
+                src="./home4.webp" fetchpriority="high" decoding="async" width="1920" height="1280" />
             <div class="absolute inset-0 hero-gradient"></div>
         </div>
         <div class="relative z-10 text-center px-6 max-w-4xl">
@@ -351,12 +405,13 @@
 
     <!-- About Section -->
     <section id="about" class="py-24 bg-surface-container-high">
-        <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-16 items-center">
+        <div class="max-w-7xl mx-auto px-6 md:px-8 grid md:grid-cols-2 gap-16 items-center">
 
             <!-- Image -->
             <div class="relative">
                 <div class="rounded-xl overflow-hidden aspect-[4/5] ambient-shadow">
-                    <img class="w-full h-full object-cover" src="fort1.jpg" alt="Homestay Exterior" />
+                    <img class="w-full h-full object-cover" src="fort1.webp" alt="Homestay Exterior View" loading="lazy"
+                        decoding="async" width="800" height="1000" />
                 </div>
 
                 <!-- Quote Card -->
@@ -429,7 +484,7 @@
         </div>
     </section>
     <!-- About Host Section -->
-    <section id="host" class="py-32 px-8 bg-surface">
+    <section id="host" class="py-32 px-6 md:px-8 bg-surface">
         <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row gap-12 md:gap-16 items-center justify-between">
 
             <div class="w-full md:w-1/2 mt-12 md:mt-0">
@@ -472,7 +527,8 @@
             <div class="w-full md:w-5/12 relative">
                 <div
                     class="aspect-[4/5] overflow-hidden rounded-t-[10rem] rounded-b-3xl shadow-2xl relative z-10 border-4 border-surface-container-low">
-                    <img class="w-full h-full object-cover" alt="Host Tharun" src="./demo/polar.avif" />
+                    <img class="w-full h-full object-cover" alt="Tharun, your host at The Polaris"
+                        src="./demo/polar.avif" loading="lazy" decoding="async" width="800" height="1000" />
                 </div>
             </div>
 
@@ -480,7 +536,7 @@
     </section>
 
     <!-- Room Cards (Bento Style) -->
-    <section id="rooms" class="py-24 px-8 bg-[#0a2e1f]">
+    <section id="rooms" class="py-24 px-6 md:px-8 bg-[#0a2e1f]">
         <div class="max-w-screen-xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl text-white font-headline font-bold text-on-surface mb-4">Choose Your
@@ -494,20 +550,24 @@
                 <div
                     class="md:col-span-8 group relative overflow-hidden rounded-xl bg-surface-container-highest h-[450px] md:h-[500px]">
                     <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        alt="Luxury premium room" src="./demo/local-cafes.avif" />
+                        alt="Luxury premium room at The Polaris" src="./demo/local-cafes.avif" loading="lazy"
+                        decoding="async" width="1200" height="800" />
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
 
-                    <div class="absolute bottom-0 left-0 p-6 md:p-10 text-white w-full flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+                    <div
+                        class="absolute bottom-0 left-0 p-6 md:p-10 text-white w-full flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
                         <div>
                             <span
                                 class="bg-secondary text-on-secondary px-3 py-1 rounded-md text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 md:mb-4 inline-block">Best
                                 Comfort</span>
                             <h3 class="text-3xl md:text-4xl font-headline font-bold mb-2">The Premium Room</h3>
-                            <p class="text-white/80 font-body text-sm md:text-base mb-4 max-w-sm">Our biggest room. Comes with a private
+                            <p class="text-white/80 font-body text-sm md:text-base mb-4 max-w-sm">Our biggest room.
+                                Comes with a private
                                 veranda and huge windows.</p>
                             <div class="flex gap-4">
                                 <span class="flex items-center gap-1 text-xs md:text-sm"><span
-                                        class="material-symbols-outlined text-primary-container text-lg">king_bed</span> Queen
+                                        class="material-symbols-outlined text-primary-container text-lg">king_bed</span>
+                                    Queen
                                     Bed</span>
                                 <span class="flex items-center gap-1 text-xs md:text-sm"><span
                                         class="material-symbols-outlined text-primary-container text-lg">balcony</span>
@@ -530,7 +590,8 @@
                 <div
                     class="md:col-span-4 group relative overflow-hidden rounded-xl bg-surface-container-highest h-[400px] md:h-[500px]">
                     <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        alt="Classic cozy room" src="./demo/fishing-nets.avif" />
+                        alt="Classic cozy room at The Polaris" src="./demo/fishing-nets.avif" loading="lazy"
+                        decoding="async" width="1200" height="800" />
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
 
                     <div class="absolute bottom-0 left-0 p-6 md:p-8 text-white w-full">
@@ -558,7 +619,8 @@
                     <div class="grid grid-cols-1 md:grid-cols-3 h-full">
                         <div class="md:col-span-1 h-64 md:h-full">
                             <img class="w-full h-full object-cover" alt="Family suite at The Polaris"
-                                src="./demo/family-suite.avif" />
+                                src="./demo/family-suite.avif" loading="lazy" decoding="async" width="1200"
+                                height="800" />
                         </div>
                         <div class="md:col-span-2 p-10 flex flex-col justify-center bg-surface-container">
                             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
@@ -593,7 +655,7 @@
     </section>
 
     <!-- Experiences Grid (Visual Journey) -->
-    <section id="gallery" class="py-24 px-8 bg-surface overflow-hidden">
+    <section id="gallery" class="py-24 px-6 md:px-8 bg-surface overflow-hidden">
         <div class="max-w-screen-xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-headline font-bold text-[#1a1c18] mb-4">View Our <span
@@ -605,27 +667,33 @@
                     <a href="./demo/premium-room.avif" class="glightbox overflow-hidden rounded-lg"
                         data-gallery="featured-gallery"><img
                             class="w-full h-full object-cover shadow-sm hover:scale-105 transition-transform duration-500"
-                            alt="Premium Room" src="./demo/premium-room.avif" /></a>
+                            alt="Premium Room Interior" src="./demo/premium-room.avif" loading="lazy" width="800"
+                            height="600" /></a>
                     <a href="./demo/local-cafes.avif" class="glightbox overflow-hidden rounded-lg"
                         data-gallery="featured-gallery"><img
                             class="w-full h-full object-cover shadow-sm hover:scale-105 transition-transform duration-500"
-                            alt="Local Cafes" src="./demo/local-cafes.avif" /></a>
+                            alt="Local Cafe Vibe" src="./demo/local-cafes.avif" loading="lazy" width="800"
+                            height="600" /></a>
                     <a href="./demo/classic-room.avif" class="glightbox overflow-hidden rounded-lg"
                         data-gallery="featured-gallery"><img
                             class="w-full h-full object-cover shadow-sm hover:scale-105 transition-transform duration-500"
-                            alt="Classic Room" src="./demo/classic-room.avif" /></a>
+                            alt="Classic Room Interior" src="./demo/classic-room.avif" loading="lazy" width="800"
+                            height="600" /></a>
                     <a href="./demo/heritage-walk.webp" class="glightbox overflow-hidden rounded-lg"
                         data-gallery="featured-gallery"><img
                             class="w-full h-full object-cover shadow-sm hover:scale-105 transition-transform duration-500"
-                            alt="Heritage Elements" src="./demo/heritage-walk.webp" /></a>
+                            alt="Heritage Architecture Details" src="./demo/heritage-walk.webp" loading="lazy"
+                            width="800" height="600" /></a>
                     <a href="./demo/family-suite.avif" class="glightbox overflow-hidden rounded-lg"
                         data-gallery="featured-gallery"><img
                             class="w-full h-full object-cover shadow-sm hover:scale-105 transition-transform duration-500"
-                            alt="Family Suite" src="./demo/family-suite.avif" /></a>
+                            alt="Family Suite Comfort" src="./demo/family-suite.avif" loading="lazy" width="800"
+                            height="600" /></a>
                     <a href="./demo/fishing-nets.avif" class="glightbox overflow-hidden rounded-lg"
                         data-gallery="featured-gallery"><img
                             class="w-full h-full object-cover shadow-sm hover:scale-105 transition-transform duration-500"
-                            alt="Fishing Nets" src="./demo/fishing-nets.avif" /></a>
+                            alt="Chinese Fishing Nets Scene" src="./demo/fishing-nets.avif" loading="lazy" width="800"
+                            height="600" /></a>
                 </div>
                 <!-- Faded Overlay & Button -->
                 <div
@@ -859,7 +927,7 @@
     </section>
 
     <!-- Policies and FAQ Section -->
-    <section class="py-24 px-8 bg-surface border-t border-surface-variant">
+    <section class="py-24 px-6 md:px-8 bg-surface border-t border-surface-variant">
         <div class="max-w-screen-xl mx-auto grid lg:grid-cols-2 gap-20">
             <!-- House Rules -->
             <div>
@@ -970,7 +1038,7 @@
     </section>
 
     <!-- Contact & Map Section -->
-    <section id="contact" class="py-24 px-8 bg-surface-container-low">
+    <section id="contact" class="py-24 px-6 md:px-8 bg-surface-container-low">
         <div class="max-w-screen-xl mx-auto grid lg:grid-cols-2 gap-20">
             <div>
                 <h2 class="text-4xl font-headline font-bold text-primary mb-6">Plan Your Retreat</h2>
@@ -1019,8 +1087,7 @@
             </div>
 
             <div class="space-y-8 flex flex-col justify-center">
-                <div
-                    class="bg-surface p-10 rounded-xl border-l-[6px] border-primary shadow-lg text-center md:text-left">
+                <div class="bg-surface p-5 rounded-xl border-l-[6px] border-primary shadow-lg text-center md:text-left">
                     <h3 class="text-3xl font-headline font-bold mb-4">The Best of Kochi, On Foot</h3>
                     <p class="text-on-surface-variant mb-6 text-lg">
                         At The Polaris, you enter the heart of it all the moment you step out our door. We are
@@ -1034,11 +1101,10 @@
                             <p class="text-on-surface-variant">Fort Kochi, Ernakulam, Kerala 682001, India</p>
                         </div>
                     </div>
-                    <div
-                        class="w-full h-64 rounded-xl overflow-hidden shadow-inner  hover:grayscale-0 transition-all duration-700">
-                        <iframe width="100%" height="100%" style="border:0;"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.6108215703703!2d76.24312267450814!3d9.966301373614767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b086d8fec530bb9%3A0xba745bfd8f9f4b29!2sThe%20Polaris%20Homestay!5e0!3m2!1sen!2sin!4v1775214550806!5m2!1sen!2sin"
-                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    <div class="h-[450px] rounded-xl overflow-hidden shadow-lg border border-surface-variant">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.3361405106294!2d76.2424164!3d9.9664539!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0811eef45070f3%3A0xf650a6e0331070f3!2sThe%20Polaris%20Homestay!5e0!3m2!1sen!2sin!4v1711200000000!5m2!1sen!2sin"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
@@ -1048,7 +1114,7 @@
 
 
     <!-- Things to Do in Fort Kochi (The Local Scene) Slider -->
-    <section id="experiences" class="py-32 px-8 bg-[#0a2e1f] text-white relative overflow-hidden">
+    <section id="experiences" class="py-32 px-6 md:px-8 bg-[#0a2e1f] text-white relative overflow-hidden">
         <div class="max-w-screen-xl mx-auto relative">
             <div class="text-center mb-20 max-w-3xl mx-auto">
                 <span class="text-white font-headline font-bold uppercase tracking-[0.2em] mb-4 block">The Local
@@ -1063,8 +1129,7 @@
             </div>
 
             <!-- Navigation Buttons (Hidden on Mobile) -->
-            <div
-                class="absolute top-[60%] -left-12 -right-12 z-20 hidden md:flex justify-between pointer-events-none">
+            <div class="absolute top-[60%] -left-12 -right-12 z-20 hidden md:flex justify-between pointer-events-none">
                 <button id="local-prev"
                     class="pointer-events-auto w-14 h-14 rounded-full bg-white/10 hover:bg-[#176A21] hover:text-white transition-all text-white backdrop-blur-xl border border-white/20 flex items-center justify-center shadow-2xl group">
                     <span
@@ -1079,14 +1144,15 @@
 
             <!-- The Slider -->
             <div id="local-scene-slider"
-                class="flex gap-8 overflow-x-auto hide-scrollbar scroll-smooth snap-x snap-mandatory">
+                class="flex gap-8 overflow-x-auto hide-scrollbar scroll-smooth snap-x snap-proximity">
 
                 <!-- Adventure 1 -->
                 <div
                     class="min-w-full md:min-w-[calc(50%-1rem)] lg:min-w-[calc(33.333%-1.35rem)] snap-start group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-500 cursor-pointer">
                     <div class="aspect-[16/10] overflow-hidden">
                         <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            alt="Chinese Fishing Nets" src="./fishing_nets.png" />
+                            alt="Traditional Chinese Fishing Nets" src="./fishing_nets.webp" loading="lazy"
+                            decoding="async" width="1200" height="750" />
                     </div>
                     <div class="p-8">
                         <div class="flex items-center gap-2 mb-3">
@@ -1108,7 +1174,8 @@
                     class="min-w-full md:min-w-[calc(50%-1rem)] lg:min-w-[calc(33.333%-1.35rem)] snap-start group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-500 cursor-pointer">
                     <div class="aspect-[16/10] overflow-hidden">
                         <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            alt="Santa Cruz Basilica" src="./basilica.png" />
+                            alt="Santa Cruz Basilica Church Architecture" src="./basilica.webp" loading="lazy"
+                            decoding="async" width="1200" height="750" />
                     </div>
                     <div class="p-8">
                         <div class="flex items-center gap-2 mb-3">
@@ -1129,7 +1196,8 @@
                     class="min-w-full md:min-w-[calc(50%-1rem)] lg:min-w-[calc(33.333%-1.35rem)] snap-start group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-500 cursor-pointer">
                     <div class="aspect-[16/10] overflow-hidden">
                         <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            alt="Princess Street" src="./princess_st.png" />
+                            alt="Princess Street Coffee Shop Scene" src="./princess_st.webp" loading="lazy"
+                            decoding="async" width="1200" height="750" />
                     </div>
                     <div class="p-8">
                         <div class="flex items-center gap-2 mb-3">
@@ -1151,7 +1219,7 @@
                     class="min-w-full md:min-w-[calc(50%-1rem)] lg:min-w-[calc(33.333%-1.35rem)] snap-start group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-500 cursor-pointer">
                     <div class="aspect-[16/10] overflow-hidden">
                         <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            alt="The Dutch Palace" src="dut.jpg" />
+                            alt="The Dutch Palace" src="dut.webp" decoding="async" />
                     </div>
                     <div class="p-8">
                         <div class="flex items-center gap-2 mb-3">
@@ -1174,7 +1242,7 @@
                     class="min-w-full md:min-w-[calc(50%-1rem)] lg:min-w-[calc(33.333%-1.35rem)] snap-start group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-500 cursor-pointer">
                     <div class="aspect-[16/10] overflow-hidden">
                         <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            alt="St. Francis Church" src="dut.webp" />
+                            alt="St. Francis Church" src="st_francis.jpg" decoding="async" />
                     </div>
                     <div class="p-8">
                         <div class="flex items-center gap-2 mb-3">
@@ -1195,7 +1263,7 @@
         </div>
     </section>
     <!-- Split Footer CTA -->
-    <section class="py-16 px-8 bg-tertiary-dim relative overflow-hidden">
+    <section class="py-16 px-6 md:px-8 bg-tertiary-dim relative overflow-hidden">
         <div
             class="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 relative z-10">
 
@@ -1226,26 +1294,26 @@
                 <!-- Full-Feature Partner Buttons -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <a href="https://www.makemytrip.com/hotels/the_polaris-details-cochin.html" target="_blank"
-                        class="bg-white/10 hover:bg-white text-white hover:text-tertiary-dim px-4 py-2 rounded-lg transition-all flex items-center gap-3 group"
+                        class="bg-white/10 hover:bg-white text-white hover:text-tertiary-dim px-4 py-2 rounded-lg transition-all flex items-center justify-center gap-3 group"
                         title="MakeMyTrip">
                         <img src="https://www.google.com/s2/favicons?domain=makemytrip.com&sz=128" alt="MMT"
-                            class="h-8 w-auto ">
+                            class="h-8 w-auto " decoding="async" width="32" height="32">
                         <span class="text-[11px] font-bold tracking-wide">MakeMyTrip</span>
                     </a>
                     <a href="https://www.goibibo.com/hotels/the-polaris-hotel-in-kochi-657067624941170871/"
                         target="_blank"
-                        class="bg-white/10 hover:bg-white text-white hover:text-tertiary-dim px-4 py-2 rounded-lg transition-all flex items-center gap-3 group"
+                        class="bg-white/10 hover:bg-white text-white hover:text-tertiary-dim px-4 py-2 rounded-lg transition-all flex items-center justify-center gap-3 group"
                         title="Goibibo">
                         <img src="https://www.google.com/s2/favicons?domain=goibibo.com&sz=128" alt="Goibibo"
-                            class="h-8 w-auto">
+                            class="h-8 w-auto" decoding="async" width="32" height="32">
                         <span class="text-[11px] font-bold tracking-wide">Goibibo</span>
                     </a>
                     <a href="https://www.agoda.com/en-nz/the-polaris/hotel/kochi-in.html?cid=1844104&ds=RdKv%2BZKeqe3nk7N1"
                         target="_blank"
-                        class="bg-white/10 hover:bg-white text-white hover:text-tertiary-dim px-4 py-2 rounded-lg transition-all flex items-center gap-3 group"
+                        class="bg-white/10 hover:bg-white text-white hover:text-tertiary-dim px-4 py-2 rounded-lg transition-all flex items-center justify-center gap-3 group"
                         title="Agoda">
                         <img src="https://www.google.com/s2/favicons?domain=agoda.com&sz=128" alt="Agoda"
-                            class="h-8 w-auto">
+                            class="h-8 w-auto" decoding="async" width="32" height="32">
                         <span class="text-[11px] font-bold tracking-wide">Agoda</span>
                     </a>
                 </div>
@@ -1258,9 +1326,10 @@
 
     <!-- Footer -->
     <footer class="w-full bg-surface-container-low pt-16 pb-8 border-t border-surface-variant">
-        <div class="flex flex-col md:flex-row justify-between items-start px-6 md:px-12 gap-12 max-w-screen-2xl mx-auto mb-12">
+        <div
+            class="flex flex-col md:flex-row justify-between items-start px-6 md:px-12 gap-12 max-w-screen-2xl mx-auto mb-12">
             <div class="space-y-6 max-w-sm">
-                <img src="./polarislogo_nobg.png" alt="The Polaris" class="h-12 w-auto object-contain mb-4" />
+                <h2 class="mb-4">The Polaris</h2>
                 Find us in the heart of the Heritage Zone. We offer a simple, modern home just 10 minutes from the
                 water and even closer to the best coffee in town.</p>
             </div>
@@ -1322,19 +1391,30 @@
         </a>
     </div>
 
-    <!-- Loader Script -->
+    <!-- Third Party Scripts -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js" defer></script>
+
     <script>
+        // Premium Loader Control
         window.addEventListener('load', () => {
+            hideLoader();
+        });
+
+        // Fail-safe: Hide loader after 2.5 seconds anyway for instant perceived speed
+        setTimeout(() => {
+            hideLoader();
+        }, 2500);
+
+        function hideLoader() {
             const loader = document.getElementById('premium-loader');
-            // Wait slightly for the brand text animation to be fully appreciated
-            setTimeout(() => {
+            if (loader && !loader.classList.contains('loader-loaded')) {
                 loader.classList.add('loader-loaded');
-                // Remove from DOM strictly after transitions finish
                 setTimeout(() => {
                     loader.style.display = 'none';
-                }, 1200);
-            }, 1500);
-        });
+                }, 800);
+            }
+        }
 
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
@@ -1346,7 +1426,6 @@
             }
         });
 
-        // Testimonial Auto-Slider
         // Testimonial Auto-Slider (Infinite Loop)
         window.addEventListener('load', () => {
             const slider = document.getElementById('testimonial-slider');
@@ -1401,75 +1480,79 @@
             slider.addEventListener('mouseleave', startAutoSlide);
             slider.addEventListener('touchstart', () => clearInterval(autoSlide), { passive: true });
         });
-    </script>
-    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
-    <script>
-        const lightbox = GLightbox({
-            selector: '.glightbox',
-            touchNavigation: true,
-            loop: true,
-            autoplayVideos: true
+
+        // GLightbox Initialization
+        window.addEventListener('load', () => {
+            const lightbox = GLightbox({
+                selector: '.glightbox',
+                touchNavigation: true,
+                loop: true,
+                autoplayVideos: true
+            });
         });
 
         // Local Scene Slider Logic
-        document.addEventListener('DOMContentLoaded', () => {
+        (function initLocalSlider() {
             const slider = document.getElementById('local-scene-slider');
             const prevBtn = document.getElementById('local-prev');
             const nextBtn = document.getElementById('local-next');
 
             if (!slider || !prevBtn || !nextBtn) return;
 
-            let autoScroll;
+            let autoScrollInterval;
 
-            const scrollAmount = () => {
-                const card = slider.children[0];
-                return card.offsetWidth + 32; // card width + gap
+            const getScrollAmount = () => {
+                const firstCard = slider.firstElementChild;
+                if (!firstCard) return 300;
+                const gap = parseInt(window.getComputedStyle(slider).gap) || 32;
+                return firstCard.offsetWidth + gap;
             };
 
             const slideNext = () => {
+                const scrollAmount = getScrollAmount();
                 const maxScroll = slider.scrollWidth - slider.clientWidth;
-                // If we're at the end, go back to start
-                if (slider.scrollLeft >= maxScroll - 50) {
+
+                // If at end, loop back
+                if (slider.scrollLeft >= maxScroll - 20) {
                     slider.scrollTo({ left: 0, behavior: 'smooth' });
                 } else {
-                    slider.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+                    slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
                 }
             };
 
             const slidePrev = () => {
-                if (slider.scrollLeft <= 50) {
+                const scrollAmount = getScrollAmount();
+                if (slider.scrollLeft <= 20) {
                     const maxScroll = slider.scrollWidth - slider.clientWidth;
                     slider.scrollTo({ left: maxScroll, behavior: 'smooth' });
                 } else {
-                    slider.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+                    slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
                 }
             };
 
+            const startAutoScroll = () => {
+                clearInterval(autoScrollInterval);
+                autoScrollInterval = setInterval(slideNext, 6000); // 6s per slide
+            };
+
             nextBtn.addEventListener('click', () => {
-                clearInterval(autoScroll);
                 slideNext();
                 startAutoScroll();
             });
 
             prevBtn.addEventListener('click', () => {
-                clearInterval(autoScroll);
                 slidePrev();
                 startAutoScroll();
             });
 
-            const startAutoScroll = () => {
-                clearInterval(autoScroll);
-                autoScroll = setInterval(slideNext, 5000);
-            };
-
-            slider.addEventListener('mouseenter', () => clearInterval(autoScroll));
+            // Pause on hover/interaction
+            slider.addEventListener('mouseenter', () => clearInterval(autoScrollInterval));
             slider.addEventListener('mouseleave', startAutoScroll);
+            slider.addEventListener('touchstart', () => clearInterval(autoScrollInterval), { passive: true });
 
-            // Handle touch events
-            slider.addEventListener('touchstart', () => clearInterval(autoScroll), { passive: true });
-
-            startAutoScroll();
-        });
+            // Initial start with delay to allow for page load sizing
+            setTimeout(startAutoScroll, 2000);
+        })();
 
         // Form Submission Feedback
         const urlParams = new URLSearchParams(window.location.search);
