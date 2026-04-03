@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>The Polaris | Premium Boutique Homestay in Fort Kochi</title>
+    <meta name="description" content="Experience the soulful charm of coastal Kerala at The Polaris. A premium, modern homestay in Fort Kochi offering tranquil stays, heritage vibes, and warm local hospitality. Book your stay today!">
+    <meta name="keywords" content="Fort Kochi homestay, Kerala homestay, stay in Fort Kochi, budget homestay Kochi, boutique stay Kerala, The Polaris Kochi">
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-background": "#2d2f2f",
+                        "surface-dim": "#d3d5d5",
+                        "surface-bright": "#f6f6f6",
+                        "secondary": "#155e9a",
+                        "surface": "#f6f6f6",
+                        "on-secondary-container": "#004a7d",
+                        "on-primary-container": "#005c15",
+                        "tertiary-fixed": "#ff9655",
+                        "inverse-primary": "#9df197",
+                        "secondary-dim": "#00528b",
+                        "tertiary-container": "#ff9655",
+                        "on-primary-fixed-variant": "#12661e",
+                        "on-error": "#ffefee",
+                        "inverse-surface": "#0c0f0f",
+                        "primary-fixed": "#9df197",
+                        "surface-container-high": "#e1e3e3",
+                        "on-secondary-fixed": "#00365e",
+                        "inverse-on-surface": "#9c9d9d",
+                        "surface-container-low": "#f0f1f1",
+                        "primary-container": "#9df197",
+                        "error-container": "#fb5151",
+                        "on-tertiary-fixed": "#2d0f00",
+                        "outline-variant": "#acadad",
+                        "on-tertiary-fixed-variant": "#612900",
+                        "outline": "#767777",
+                        "surface-container": "#e7e8e8",
+                        "background": "#f6f6f6",
+                        "surface-container-highest": "#dbdddd",
+                        "tertiary-dim": "#843a00",
+                        "on-secondary-fixed-variant": "#00538d",
+                        "on-surface": "#2d2f2f",
+                        "surface-tint": "#176a21",
+                        "secondary-fixed": "#b3d4ff",
+                        "on-primary-fixed": "#00460e",
+                        "primary-dim": "#025d16",
+                        "primary-fixed-dim": "#90e28a",
+                        "primary": "#176a21",
+                        "on-secondary": "#edf3ff",
+                        "on-tertiary-container": "#532200",
+                        "on-tertiary": "#fff0e9",
+                        "surface-variant": "#dbdddd",
+                        "on-surface-variant": "#5a5c5c",
+                        "tertiary-fixed-dim": "#f6853b",
+                        "tertiary": "#964300",
+                        "secondary-fixed-dim": "#98c7ff",
+                        "error-dim": "#9f0519",
+                        "on-primary": "#d1ffc8",
+                        "on-error-container": "#570008",
+                        "error": "#b31b25",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#b3d4ff"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            background: rgba(246, 246, 246, 0.7);
+            backdrop-filter: blur(20px);
+        }
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(23, 106, 33, 0.4), rgba(21, 94, 154, 0.6));
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+
+    <!-- Top Navigation Bar -->
+    <nav class="fixed top-0 w-full z-50 glass-nav">
+        <div class="flex justify-between items-center px-8 py-6 max-w-screen-2xl mx-auto">
+            <div class="text-2xl font-bold tracking-tighter text-primary font-headline">The Polaris</div>
+            <div class="hidden md:flex gap-10 items-center">
+                <a class="font-headline text-sm tracking-wide uppercase font-semibold text-primary border-b-2 border-primary pb-1" href="#about">The Stay</a>
+                <a class="font-headline text-sm tracking-wide uppercase font-semibold text-on-surface opacity-80 hover:text-secondary transition-colors duration-300" href="#rooms">Suites</a>
+                <a class="font-headline text-sm tracking-wide uppercase font-semibold text-on-surface opacity-80 hover:text-secondary transition-colors duration-300" href="#experiences">Experiences</a>
+                <a class="font-headline text-sm tracking-wide uppercase font-semibold text-on-surface opacity-80 hover:text-secondary transition-colors duration-300" href="#host">Host</a>
+            </div>
+            <a href="#contact" class="bg-primary text-on-primary px-6 py-3 rounded-full font-headline text-sm font-bold uppercase tracking-widest scale-95 active:scale-90 transition-all shadow-lg shadow-primary/10">
+                Book Your Escape
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0 bg-black/60">
+            <img class="w-full h-full object-cover opacity-80" alt="Stunning view of Fort Kochi beach" src="./demo/hero-background.jpg"/>
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+        <div class="relative z-10 text-center px-6 max-w-4xl">
+            <h1 class="text-white font-headline text-5xl md:text-7xl font-extrabold tracking-tighter leading-tight drop-shadow-2xl">
+                The Soul of <span class="text-primary-container">Coastal Serenity</span>
+            </h1>
+            <p class="text-white/90 font-body text-xl md:text-2xl mt-8 mb-12 max-w-2xl mx-auto leading-relaxed drop-shadow-lg">
+                Discover a sanctuary of slow living and heritage charm at The Polaris, where the quiet rhythm of the Arabian Sea meets heartfelt Kerala hospitality.
+            </p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center">
+                <a href="#contact" class="inline-flex justify-center items-center bg-tertiary text-on-tertiary px-10 py-5 rounded-xl font-headline font-bold text-lg hover:scale-105 active:scale-95 transition-all shadow-2xl tracking-wide">
+                    Book Your Stay
+                </a>
+                <a href="#rooms" class="inline-flex justify-center items-center bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-5 rounded-xl font-headline font-bold text-lg hover:bg-white/20 transition-all tracking-wide">
+                    Explore Rooms
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+            <span class="material-symbols-outlined text-white text-4xl">expand_more</span>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-8 bg-surface-container-low overflow-hidden">
+        <div class="max-w-screen-xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+            <div class="relative">
+                <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary-container rounded-full opacity-30 blur-3xl"></div>
+                <img class="rounded-xl shadow-2xl relative z-10 w-full h-[600px] object-cover" alt="Lush tropical garden patio of the homestay" src="./demo/property-exterior.avif"/>
+                <div class="absolute -bottom-12 -right-12 hidden lg:block">
+                    <img class="rounded-lg shadow-xl w-64 h-64 object-cover border-8 border-surface" alt="Close up of tropical courtyard" src="./demo/courtyard-garden.webp"/>
+                </div>
+            </div>
+            
+            <div class="space-y-8">
+                <span class="bg-primary-container text-on-primary-fixed-variant px-4 py-1.5 rounded-full text-sm font-bold tracking-widest uppercase">A Quiet Corner</span>
+                <h2 class="text-5xl font-headline font-extrabold text-primary leading-tight">Welcome to The Polaris</h2>
+                <p class="text-lg text-on-surface-variant leading-relaxed">
+                    Designed to reflect the timeless elegance and relaxed tempo of coastal Kerala. Nestled in a peaceful residential lane, our boutique homestay is a sanctuary away from the hustle, yet perfectly positioned a short stroll from Fort Kochi's rich colonial history.
+                </p>
+                <p class="text-lg text-on-surface-variant leading-relaxed">
+                    Here, slow travel is celebrated. Whether you're enjoying a morning tea on a sunlit veranda or winding down after exploring the heritage streets, our space offers a warm, minimalistic retreat for the modern wanderer seeking deep rest.
+                </p>
+                <div class="pt-6">
+                    <a class="text-secondary font-headline font-bold flex items-center gap-2 group" href="#host">
+                        Meet Your Host 
+                        <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Host Section -->
+    <section id="host" class="py-24 px-8 bg-surface">
+        <div class="max-w-screen-xl mx-auto grid md:grid-cols-[2fr_1fr] gap-20 items-center">
+            <div class="space-y-6 order-2 md:order-1">
+                <h2 class="text-4xl font-headline font-bold text-primary mb-2">Meet Your Host, Tharun</h2>
+                <p class="text-lg text-on-surface-variant leading-relaxed mb-6">
+                    Hi, I'm Tharun. Since 2026, I've had the absolute joy of welcoming travelers from around the world to Fort Kochi. My philosophy is simple: I don't just provide a room; I help you experience my home city like a local. 
+                </p>
+                <p class="text-lg text-on-surface-variant leading-relaxed">
+                    From mapping out hidden heritage walks and pointing you toward the best uncrowded cafes, to simply sharing a cup of freshly brewed South Indian coffee in the morning—I’m here (in English, Hindi, or Malayalam) to ensure your stay is authentic, effortless, and deeply memorable.
+                </p>
+            </div>
+            <div class="order-1 md:order-2">
+                 <img class="rounded-full shadow-2xl relative z-10 w-64 h-64 md:w-80 md:h-80 object-cover mx-auto ring-8 ring-primary/10" alt="Host Tharun" src="./demo/kochi-harbour.webp"/>
+            </div>
+        </div>
+    </section>
+
+    <!-- Room Cards (Bento Style) -->
+    <section id="rooms" class="py-24 px-8 bg-surface-container-low">
+        <div class="max-w-screen-xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-headline font-bold text-on-surface mb-4">Choose Your Sanctuary</h2>
+                <p class="text-on-surface-variant text-lg">Curated spaces designed for ultimate relaxation.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 h-auto">
+                <!-- Large Card: Premium Room -->
+                <div class="md:col-span-8 group relative overflow-hidden rounded-xl bg-surface-container-highest h-[500px]">
+                    <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Luxury premium room" src="./demo/premium-room.avif"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+                    
+                    <div class="absolute bottom-0 left-0 p-10 text-white w-full flex justify-between items-end">
+                        <div>
+                            <span class="bg-secondary text-on-secondary px-3 py-1 rounded-md text-xs font-bold uppercase tracking-widest mb-4 inline-block">Best Comfort</span>
+                            <h3 class="text-4xl font-headline font-bold mb-2">The Premium Room</h3>
+                            <p class="text-white/80 font-body mb-4 max-w-sm">A sun-drenched coastal retreat designed for ultimate relaxation.</p>
+                            <div class="flex gap-4">
+                                <span class="flex items-center gap-1 text-sm"><span class="material-symbols-outlined text-primary-container">king_bed</span> Queen Bed</span>
+                                <span class="flex items-center gap-1 text-sm"><span class="material-symbols-outlined text-primary-container">balcony</span> Veranda</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-3xl font-headline font-bold mb-4">₹3,500<span class="text-lg font-normal">/night</span></div>
+                            <a href="#contact" class="bg-primary-container text-on-primary-container px-8 py-3 rounded-lg font-bold hover:bg-white transition-colors inline-block">Reserve</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Side Card: Classic Room -->
+                <div class="md:col-span-4 group relative overflow-hidden rounded-xl bg-surface-container-highest h-[500px]">
+                    <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Classic cozy room" src="./demo/classic-room.avif"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    
+                    <div class="absolute bottom-0 left-0 p-8 text-white w-full">
+                        <span class="bg-primary text-on-primary px-3 py-1 rounded-md text-xs font-bold uppercase tracking-widest mb-3 inline-block">Great Value</span>
+                        <h3 class="text-2xl font-headline font-bold mb-2">The Classic Room</h3>
+                        <p class="text-white/80 font-body text-sm mb-4">Minimalist, cozy, and thoughtfully appointed for peaceful nights.</p>
+                        <div class="flex justify-between items-center mt-6">
+                            <div class="text-2xl font-headline font-bold">₹2,200<span class="text-sm font-normal">/night</span></div>
+                            <a href="#contact" class="bg-white text-primary px-6 py-2 rounded-lg font-bold text-sm inline-block">Reserve</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Horizontal Card: Family Suite -->
+                <div class="md:col-span-12 group relative overflow-hidden rounded-xl bg-surface-container-highest h-auto md:h-[300px]">
+                    <div class="grid grid-cols-1 md:grid-cols-3 h-full">
+                        <div class="md:col-span-1 h-64 md:h-full">
+                            <img class="w-full h-full object-cover" alt="Family suite at The Polaris" src="./demo/family-suite.avif"/>
+                        </div>
+                        <div class="md:col-span-2 p-10 flex flex-col justify-center bg-surface-container-low">
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                                <div>
+                                    <h3 class="text-3xl font-headline font-bold text-primary mb-2">The Family Option</h3>
+                                    <p class="text-on-surface-variant max-w-lg mb-4">Spacious interconnected spaces bringing loved ones together. Expanded footprint accommodating up to 4 guests with private seating.</p>
+                                    <div class="flex gap-4">
+                                        <span class="flex items-center gap-1 text-sm text-on-surface-variant font-medium"><span class="material-symbols-outlined text-primary">groups</span> Up to 4 Guests</span>
+                                    </div>
+                                </div>
+                                <div class="text-left md:text-right w-full md:w-auto">
+                                    <div class="text-3xl font-headline font-bold text-on-surface mb-4">₹5,500<span class="text-lg font-normal">/night</span></div>
+                                    <a href="#contact" class="block text-center bg-secondary text-on-secondary px-8 py-3 rounded-lg font-bold hover:bg-secondary-dim transition-all">Book Family Stay</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiences Grid (Visual Journey) -->
+    <section class="py-24 px-8 bg-surface overflow-hidden">
+        <div class="max-w-screen-xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-headline font-bold text-on-surface mb-4">Island Life in Focus</h2>
+                <p class="text-on-surface-variant text-lg">A visual journey through our tropical sanctuary.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Left Column -->
+                <div class="flex flex-col gap-4">
+                    <div class="overflow-hidden rounded-xl shadow-lg group">
+                        <img alt="Backwaters of Kochi" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="./demo/backwater-trip.avif" style="object-position: center; aspect-ratio: 16/10;"/>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="overflow-hidden rounded-xl shadow-lg group">
+                            <img alt="Art and culture cafes" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="./demo/local-cafes.avif" style="object-position: center; aspect-ratio: 1/1;"/>
+                        </div>
+                        <div class="overflow-hidden rounded-xl shadow-lg group">
+                            <img alt="Fort Kochi scenic views" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="./demo/kochi-harbour.webp" style="object-position: center; aspect-ratio: 1/1;"/>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right Column -->
+                <div class="overflow-hidden rounded-xl shadow-lg group">
+                    <img alt="Chinese Fishing Nets" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="./demo/fishing-nets.avif" style="object-position: center; aspect-ratio: 1/1.2;"/>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiences Cards -->
+    <section id="experiences" class="py-24 px-8 bg-primary-dim text-on-primary overflow-hidden">
+        <div class="max-w-screen-xl mx-auto flex flex-col gap-16">
+            <div class="flex flex-col md:flex-row justify-between items-end gap-8">
+                <div class="max-w-2xl">
+                    <span class="text-primary-fixed font-headline font-bold uppercase tracking-widest">Kochi Uncovered</span>
+                    <h2 class="text-5xl font-headline font-extrabold mt-4 mb-6">Embrace the Spirit of the Coast</h2>
+                    <p class="text-xl text-primary-container leading-relaxed">Beyond the veranda, a world of tradition and tranquility awaits. Let us guide you through the hidden gems of our heritage city.</p>
+                </div>
+                <a href="#contact" class="bg-primary-fixed text-on-primary-fixed px-8 py-4 rounded-xl font-bold flex items-center gap-3 hover:bg-white transition-colors">
+                    Plan Experiences <span class="material-symbols-outlined">explore</span>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="group cursor-pointer">
+                    <div class="overflow-hidden rounded-lg aspect-[4/5] mb-6">
+                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Heritage walk in Fort Kochi" src="./demo/heritage-walk.webp"/>
+                    </div>
+                    <h4 class="text-2xl font-headline font-bold mb-2">Heritage Walk</h4>
+                    <p class="text-primary-container">Stroll past centuries of colonial footprints, from Santa Cruz to Dutch cemeteries.</p>
+                </div>
+                
+                <div class="group cursor-pointer">
+                    <div class="overflow-hidden rounded-lg aspect-[4/5] mb-6">
+                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Kathakali Performance" src="./demo/kathakali-show.avif"/>
+                    </div>
+                    <h4 class="text-2xl font-headline font-bold mb-2">Kathakali Spectacles</h4>
+                    <p class="text-primary-container">Get lost in the dramatic, rhythmic storytelling of ancient Kerala dance, just minutes away.</p>
+                </div>
+                
+                <div class="group cursor-pointer">
+                    <div class="overflow-hidden rounded-lg aspect-[4/5] mb-6">
+                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Sunset backwater cruise" src="./demo/backwater-trip.avif"/>
+                    </div>
+                    <h4 class="text-2xl font-headline font-bold mb-2">Backwater Tranquility</h4>
+                    <p class="text-primary-container">Let us arrange a languid afternoon drifting through the famous emerald canals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section (Bubble Style) -->
+    <section class="py-24 px-8 bg-surface-container-low overflow-hidden relative">
+        <div class="absolute top-0 right-0 p-20 opacity-5">
+            <span class="material-symbols-outlined text-[20rem] text-primary">format_quote</span>
+        </div>
+        
+        <div class="max-w-screen-xl mx-auto relative z-10">
+            <h2 class="text-4xl font-headline font-bold text-center mb-20">Voices from Our Guests</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 lg:gap-12 items-start">
+                <!-- Testimonial 1 -->
+                <div class="bg-surface-container-lowest p-10 rounded-[3rem] shadow-sm relative hover:-translate-y-2 transition-transform duration-300">
+                    <div class="flex gap-1 mb-4 text-tertiary">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    </div>
+                    <p class="text-on-surface text-lg leading-relaxed mb-8 italic">"A true gem in Fort Kochi. Tharun's hospitality was unmatched, and the Premium room was flawless. It felt like a luxury hotel but with the soul of a local home."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center font-bold text-on-secondary-container">SL</div>
+                        <div>
+                            <div class="font-headline font-bold">Sarah L.</div>
+                            <div class="text-sm text-on-surface-variant">UK</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-primary-container p-10 rounded-[3rem] shadow-sm relative lg:mt-12 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="flex gap-1 mb-4 text-on-primary-container">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    </div>
+                    <p class="text-on-primary-container text-lg leading-relaxed mb-8 font-medium">"The Polaris was the highlight of our Kerala trip. It's so quiet, beautifully decorated, and we could walk to all the major cafes and the Basilica in minutes."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center font-bold text-on-primary">RP</div>
+                        <div>
+                            <div class="font-headline font-bold text-on-primary-container">Rohan & Priya</div>
+                            <div class="text-sm text-on-primary-container opacity-70">Mumbai, India</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-secondary-container p-10 rounded-[3rem] shadow-sm relative hover:-translate-y-2 transition-transform duration-300">
+                    <div class="flex gap-1 mb-4 text-secondary">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    </div>
+                    <p class="text-on-secondary-container text-lg leading-relaxed mb-8 italic">"If you want peace, aesthetics, and a genuinely caring host, this is the place. Highly recommend grabbing a coffee on the veranda before heading out to the fishing nets!"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center font-bold text-white">MD</div>
+                        <div>
+                            <div class="font-headline font-bold text-on-secondary-container">Marco D.</div>
+                            <div class="text-sm text-on-secondary-container opacity-70">Italy</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Policies and FAQ Section -->
+    <section class="py-24 px-8 bg-surface border-t border-surface-variant">
+        <div class="max-w-screen-xl mx-auto grid lg:grid-cols-2 gap-20">
+            <!-- House Rules -->
+            <div>
+                <h3 class="text-3xl font-headline font-bold text-primary mb-8">House Guidelines</h3>
+                <p class="text-on-surface-variant mb-8">We ask that you respect our space as you would your own home.</p>
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-primary/10 p-3 rounded-full text-primary"><span class="material-symbols-outlined">schedule</span></div>
+                        <div>
+                            <h4 class="font-bold text-lg font-headline">Arrival & Departure</h4>
+                            <p class="text-on-surface-variant">Check-in: 2:00 PM | Check-out: 11:00 AM</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="bg-primary/10 p-3 rounded-full text-primary"><span class="material-symbols-outlined">verified_user</span></div>
+                        <div>
+                            <h4 class="font-bold text-lg font-headline">Requirements</h4>
+                            <p class="text-on-surface-variant">Primary guest must be 18+ with a valid government ID. Unmarried couples are warmly welcome.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="bg-primary/10 p-3 rounded-full text-primary"><span class="material-symbols-outlined">nature_people</span></div>
+                        <div>
+                            <h4 class="font-bold text-lg font-headline">Vibe & Atmosphere</h4>
+                            <p class="text-on-surface-variant">Strictly no smoking indoors, no parties. Outside visitors not permitted for security. Regrettably no pets.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQS -->
+            <div>
+                <h3 class="text-3xl font-headline font-bold text-primary mb-8">Frequently Asked Questions</h3>
+                <div class="space-y-6">
+                    <div class="bg-surface-container-low p-6 rounded-xl border border-surface-variant">
+                        <h4 class="font-bold font-headline mb-2">Do you allow early check-ins or late check-outs?</h4>
+                        <p class="text-sm text-on-surface-variant">We do our best to accommodate these requests based on availability. Please let us know your arrival time in advance.</p>
+                    </div>
+                    <div class="bg-surface-container-low p-6 rounded-xl border border-surface-variant">
+                        <h4 class="font-bold font-headline mb-2">Is food available at the homestay?</h4>
+                        <p class="text-sm text-on-surface-variant">While we do not run a restaurant, we are surrounded by spectacular cafes and seafood spots in Fort Kochi, all within walking distance.</p>
+                    </div>
+                    <div class="bg-surface-container-low p-6 rounded-xl border border-surface-variant">
+                        <h4 class="font-bold font-headline mb-2">Can you help arrange tours?</h4>
+                        <p class="text-sm text-on-surface-variant">Absolutely! We gladly assist in booking airport transfers, backwater tours, and Kathakali show tickets.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Map Section -->
+    <section id="contact" class="py-24 px-8 bg-surface-container-low">
+        <div class="max-w-screen-xl mx-auto grid lg:grid-cols-2 gap-20">
+            <div>
+                <h2 class="text-4xl font-headline font-bold text-primary mb-6">Plan Your Retreat</h2>
+                <p class="text-on-surface-variant text-lg mb-10 leading-relaxed">
+                    Have a special request, need help finalizing your travel dates, or want to book the whole property? Reach out directly. We’re quick to respond and always ready to make your journey unforgettable.
+                </p>
+                
+                <form class="space-y-6">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Full Name</label>
+                            <input class="w-full p-4 rounded-lg bg-surface-container-highest border-none focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none" placeholder="John Doe" type="text"/>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Email Address</label>
+                            <input class="w-full p-4 rounded-lg bg-surface-container-highest border-none focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none" placeholder="john@example.com" type="email"/>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Your Message</label>
+                        <textarea class="w-full p-4 rounded-lg bg-surface-container-highest border-none focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none" placeholder="Tell us about your travel dates and preferences..." rows="4"></textarea>
+                    </div>
+                    <button type="button" class="w-full bg-primary text-on-primary py-4 rounded-xl font-headline font-bold text-lg hover:scale-[1.02] transition-all shadow-xl shadow-primary/20">Send Inquiry</button>
+                </form>
+            </div>
+            
+            <div class="space-y-8 flex flex-col justify-center">
+                <div class="bg-surface p-10 rounded-xl border-l-[6px] border-primary shadow-lg text-center md:text-left">
+                    <h3 class="text-3xl font-headline font-bold mb-4">The Best of Kochi, On Foot</h3>
+                    <p class="text-on-surface-variant mb-6 text-lg">
+                        At The Polaris, you enter the heart of it all the moment you step out our door. We are exceptionally walkable, positioned just 500 meters from the majestic Santa Cruz Basilica and a brisk 10-minute stroll to the famous Chinese Fishing Nets.
+                    </p>
+                    <div class="flex items-start gap-4">
+                        <span class="material-symbols-outlined text-primary text-3xl">location_on</span>
+                        <div class="text-left">
+                            <h4 class="font-headline font-bold text-xl mb-1">Visit Us</h4>
+                            <p class="text-on-surface-variant">Fort Kochi, Ernakulam, Kerala 682001, India</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="py-20 px-8 bg-tertiary-dim text-center">
+        <h2 class="text-4xl md:text-5xl font-headline font-extrabold text-white mb-6">Your Fort Kochi Story Starts Here.</h2>
+        <p class="text-xl text-white/80 mb-10 max-w-2xl mx-auto">Unplug from the noise. Sink into coastal time.</p>
+        <div class="flex justify-center gap-4">
+            <a href="#rooms" class="bg-white text-tertiary-dim px-10 py-4 rounded-xl font-bold hover:scale-105 transition-transform shadow-xl">Secure Your Room</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="w-full bg-surface-container-low pt-16 pb-8 border-t border-surface-variant">
+        <div class="flex flex-col md:flex-row justify-between items-start px-12 gap-12 max-w-screen-2xl mx-auto mb-12">
+            <div class="space-y-6 max-w-sm">
+                <div class="text-2xl font-bold text-primary font-headline">The Polaris</div>
+                <p class="text-on-surface-variant font-body leading-relaxed">Preserving the timeless charm of Fort Kochi while providing a modern, quiet sanctuary for the global traveler.</p>
+            </div>
+            <div class="grid grid-cols-2 gap-12">
+                <div class="space-y-4">
+                    <h5 class="font-headline font-bold text-primary uppercase text-xs tracking-widest">Navigation</h5>
+                    <ul class="space-y-3 font-body">
+                        <li><a class="text-on-surface hover:text-secondary transition-colors" href="#about">The Stay</a></li>
+                        <li><a class="text-on-surface hover:text-secondary transition-colors" href="#rooms">Suites</a></li>
+                        <li><a class="text-on-surface hover:text-secondary transition-colors" href="#experiences">Experiences</a></li>
+                        <li><a class="text-on-surface hover:text-secondary transition-colors" href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h5 class="font-headline font-bold text-primary uppercase text-xs tracking-widest">Connect</h5>
+                    <ul class="space-y-3 font-body">
+                        <li><a class="text-on-surface hover:text-secondary transition-colors" href="#">Instagram</a></li>
+                        <li><a class="text-on-surface hover:text-secondary transition-colors" href="#">WhatsApp</a></li>
+                        <li><a class="text-on-surface hover:text-secondary transition-colors" href="#">Email Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="px-12 pt-8 border-t border-surface-variant/50 text-center">
+            <p class="text-on-surface-variant/60 text-sm">© 2026 The Polaris Homestay, Fort Kochi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Widget -->
+    <div class="fixed bottom-24 right-8 z-40 hidden md:block">
+        <a class="flex items-center gap-3 bg-white px-6 py-3 rounded-full shadow-2xl border border-outline-variant/20 hover:-translate-y-1 transition-transform" href="#">
+            <div class="w-3 h-3 rounded-full bg-[#25D366] animate-pulse"></div>
+            <span class="font-headline font-bold text-primary">Chat with Tharun</span>
+            <span class="material-symbols-outlined text-[#25D366]">chat</span>
+        </a>
+    </div>
+
+    <!-- Sticky Reserve Button (Mobile Only) -->
+    <div class="md:hidden fixed bottom-0 left-0 w-full p-4 bg-white/90 backdrop-blur-xl z-50 border-t border-outline-variant/20">
+        <a href="#rooms" class="block w-full text-center bg-primary text-on-primary py-4 rounded-xl font-headline font-bold text-lg shadow-lg">
+            Reserve Now — from ₹2,200
+        </a>
+    </div>
+
+</body>
+</html>
